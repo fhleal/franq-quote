@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 module.exports = {
   env: {
     node: true,
@@ -16,6 +15,8 @@ module.exports = {
     }
   },
   rules: {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+   
   }
 };
