@@ -1,24 +1,35 @@
-import { useState } from 'react';
 import './index.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { isAuthenticated } from './utils/auth';
+import HomeView from './pages/home/HomeView';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Login from './pages/authentication/login/Login';
+import Register from './pages/authentication/register/Register';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const authenticated = isAuthenticated();
 
   return (
-    <div className="flex flex-col items-center text-center p-9">
-      <h1 className="text-4xl text-blue-500">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        index
+        element={
+          <PrivateRoute>
+            <HomeView />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={authenticated ? <Navigate to="/" /> : <Login />}
+      />
+      <Route
+        path="/register"
+        element={authenticated ? <Navigate to="/" /> : <Register />}
+      />
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 }
 
