@@ -21,21 +21,28 @@ export const loginUser = (email: string, password: string): boolean => {
 
 
 export const isAuthenticated = (): boolean => {
-  const session = localStorage.getItem("session")
-  if (!session) return false
+  try {
+    const session = localStorage.getItem("session");
+    if (!session) return false;
 
-  const { startTime } = JSON.parse(session);
-  const now = new Date().getTime();
+    const { startTime } = JSON.parse(session);
+    if (!startTime) return false;
 
-  if (now - startTime > SESSION_DURATION) {
-    localStorage.removeItem("session");
+    const now = new Date().getTime();
+    if (now - startTime > SESSION_DURATION) {
+      localStorage.removeItem("session");
+      return false;
+    }
+
+    return true;
+  } catch {
     return false;
   }
-
-  return true;
 };
 
-export function logout() {
+
+
+export function handleLogout() {
   localStorage.removeItem('session');
 }
 

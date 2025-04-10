@@ -1,17 +1,18 @@
-import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Navigate } from 'react-router-dom';
 import { isAuthenticated } from '../../../utils/auth';
 import { User } from '../../../domains/User';
 import { registerUser } from '../../../utils/storage';
 import RegisterView from './RegisterView';
+import useToast from '../../../hooks/toast/useToast';
 
 const Register = () => {
-  useEffect(() => {
-    if (isAuthenticated()) {
-      <Navigate to="/" replace />;
-    }
-  }, []);
+  const { showToast } = useToast();
+  const authenticated = isAuthenticated();
+
+  if (authenticated) {
+    return <Navigate to="/" replace />;
+  }
 
   const {
     register,
@@ -21,7 +22,7 @@ const Register = () => {
 
   const onSubmit: SubmitHandler<User> = (data) => {
     registerUser(data);
-    alert('User registered!');
+    showToast('User registered!', 'success');
   };
 
   return (

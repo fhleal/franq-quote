@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { isAuthenticated, loginUser } from '../../../utils/auth';
+import { loginUser } from '../../../utils/auth';
 import { User } from '../../../domains/User';
 import useToast from '../../../hooks/toast/useToast';
 import LoginView from './LoginView';
+import useAuth from '../../../hooks/auth/useAuth';
 
 const Login = () => {
   const { showToast } = useToast();
   const navigate = useNavigate();
-
+  const isAuthenticated = useAuth();
   const {
     register,
     handleSubmit,
@@ -17,7 +18,7 @@ const Login = () => {
   } = useForm<User>();
 
   useEffect(() => {
-    if (isAuthenticated()) {
+    if (isAuthenticated) {
       navigate('/');
     }
   }, []);
