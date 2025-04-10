@@ -1,3 +1,4 @@
+import { Session } from "../domains/Session";
 import { User } from "../domains/User";
 
 const SESSION_DURATION = 30 * 60 * 1000; 
@@ -7,7 +8,7 @@ export const loginUser = (email: string, password: string): boolean => {
   const user = users.find(u => u.email === email && u.password === password);
 
   if (user) {
-    const session = {
+    const session : Session = {
       name: user.name,
       email: user.email,
       startTime: new Date().getTime(),

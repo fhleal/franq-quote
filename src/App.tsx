@@ -1,9 +1,9 @@
 import './index.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import HomeView from './pages/home/HomeView';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Login from './pages/authentication/login/Login';
 import Register from './pages/authentication/register/Register';
+import Home from './pages/home/Home';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         index
         element={
           <PrivateRoute>
-            <HomeView />
+            <Home />
           </PrivateRoute>
         }
       />

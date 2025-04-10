@@ -1,5 +1,5 @@
 import { User } from "../domains/User";
-import useToast from "../hooks/toast/useToast";
+import useToast from "../hooks/useToast";
 
   
 export const registerUser = (user: User) => {

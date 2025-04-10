@@ -4,7 +4,7 @@ import { isAuthenticated } from '../../../utils/auth';
 import { User } from '../../../domains/User';
 import { registerUser } from '../../../utils/storage';
 import RegisterView from './RegisterView';
-import useToast from '../../../hooks/toast/useToast';
+import useToast from '../../../hooks/useToast';
 
 const Register = () => {
   const { showToast } = useToast();

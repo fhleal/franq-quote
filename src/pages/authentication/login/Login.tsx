@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../../utils/auth';
 import { User } from '../../../domains/User';
-import useToast from '../../../hooks/toast/useToast';
+import useToast from '../../../hooks/useToast';
 import LoginView from './LoginView';
-import useAuth from '../../../hooks/auth/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
   const { showToast } = useToast();
