@@ -9,7 +9,7 @@ app.get('/api/finance', async (req, res) => {
   try {
     const response = await axios.get('https://api.hgbrasil.com/finance', {
       params: {
-        key: '8a6ab20f', // Substitua pela sua chave real
+        key: '8a6ab20f',
       },
     });
 
