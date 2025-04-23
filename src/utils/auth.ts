@@ -1,7 +1,7 @@
+import { SESSION_DURATION } from "../config/constants";
 import { Session } from "../domains/Session";
 import { User } from "../domains/User";
 
-const SESSION_DURATION = 30 * 60 * 1000; 
 
 export const loginUser = (email: string, password: string): boolean => {
   const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");

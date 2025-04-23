@@ -1,9 +1,8 @@
-import axios from 'axios'
-import { API_KEY, BASE_URL } from '../config/constants'
+// api.ts
+import axios from 'axios';
 
 const api = axios.create({
-    baseURL: `${BASE_URL}${API_KEY}`
-})
+  baseURL: '/api', // agora bate no seu proxy
+});
 
-
-export default api
+export default api;
