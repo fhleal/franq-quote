@@ -1,5 +1,5 @@
 import { Currency } from '../../../domains/Currency';
-import CurrencyCardView from './CurrencyCradView';
+import CurrencyCardView from './CurrencyCardView';
 
 type Props = Currency & {
   code: string;
