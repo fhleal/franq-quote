@@ -3,4 +3,8 @@ export interface Stock {
     location: string;
     points: number;
     variation: number;
-  }
+}
+
+export type StockWithIndex = {
+  index: string & Stock
+}
